@@ -1,0 +1,23 @@
+$border-1: 0.0625rem; // 1px
+$border-2: 0.125rem; // 2px
+$border-3: 0.1875rem; // 3px
+$border-4: 0.25rem; // 4px
+$border-5: 0.5rem; // 8px
+
+@function border($shade) {
+  $borders: (
+    1: $border-1,
+    2: $border-2,
+    3: $border-3,
+    4: $border-4,
+    5: $border-5,
+  );
+
+  $value: map-get($borders, $shade);
+
+  @if not $value {
+    @error 'Border "#{$shade}" not found.';
+  }
+
+  @return $value;
+}

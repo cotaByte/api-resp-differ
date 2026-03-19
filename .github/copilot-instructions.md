@@ -1,4 +1,3 @@
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
 ## TypeScript Best Practices
@@ -53,3 +52,30 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Skills Context
+
+Always apply the following skill references as context:
+
+#file:../.skills/angular-signals/SKILL.md
+#file:../.skills/angular-signals/references/signal-patterns.md
+#file:../.skills/angular-component/SKILL.md
+#file:../.skills/angular-component/references/component-patterns.md
+#file:../.skills/angular-directives/SKILL.md
+#file:../.skills/angular-directives/references/directive-patterns.md
+#file:../.skills/angular-forms/SKILL.md
+#file:../.skills/angular-forms/references/form-patterns.md
+#file:../.skills/angular-forms/references/formvalueControl-patterns.md
+#file:../.skills/angular-http/SKILL.md
+#file:../.skills/angular-http/references/http-patterns.md
+#file:../.skills/angular-routing/SKILL.md
+#file:../.skills/angular-routing/references/routing-patterns.md
+#file:../.skills/angular-di/SKILL.md
+#file:../.skills/angular-di/references/di-patterns.md
+#file:../.skills/angular-ssr/SKILL.md
+#file:../.skills/angular-ssr/references/ssr-patterns.md
+#file:../.skills/angular-testing/SKILL.md
+#file:../.skills/angular-testing/references/testing-patterns.md
+#file:../.skills/angular-testing/references/vitest-migration.md
+#file:../.skills/angular-tooling/SKILL.md
+#file:../.skills/angular-tooling/references/tooling-patterns.md

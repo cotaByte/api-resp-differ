@@ -1,0 +1,116 @@
+@use 'colors' as *;
+@use 'shadows' as *;
+@use 'borders' as *;
+@use 'margins' as *;
+
+$sidebar-expanded-width: 220px;
+$sidebar-collapsed-width: 56px;
+$transition-speed: 200ms;
+
+:host {
+  display: block;
+  height: 100%;
+}
+
+.sidebar {
+  position: relative;
+  display: flex;
+  box-shadow: shadow(5);
+  flex-direction: column;
+  width: $sidebar-expanded-width;
+  height: 100%;
+  background: color('grey', 100);
+  border-right: 1px solid color('grey', 200);
+  transition: width $transition-speed ease;
+  overflow: hidden;
+
+  &--collapsed {
+    width: $sidebar-collapsed-width;
+  }
+
+  &__toggle {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 12px;
+    margin: 4px 2px;
+    border: none;
+    border-radius: 6px;
+    background: color('grey', 100);
+    color: color('grey', 400);
+    cursor: pointer;
+    align-self: flex-end;
+    flex-shrink: 0;
+
+    &:hover {
+      background: color('grey', 200);
+      color: color('grey', 900);
+    }
+
+    &:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+  }
+
+  &__chevron {
+    transition: transform $transition-speed ease;
+    flex-shrink: 0;
+  }
+
+  &__nav {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    padding: 4px 8px;
+    flex: 1;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 12px;
+    border-radius: 6px;
+    color: color('grey', 900);
+    text-decoration: none;
+    white-space: nowrap;
+    transition:
+      background $transition-speed ease,
+      color $transition-speed ease;
+    min-width: 0;
+
+    &:hover {
+      background: color('grey', 200);
+      color: color('grey', 900);
+    }
+
+    &:focus-visible {
+      outline: 2px solid color('blue', 500);
+      outline-offset: 2px;
+    }
+
+    &--active {
+      background: color('grey', 100);
+      color: color('grey', 900);
+      font-weight: 500;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: inherit;
+  }
+
+  &__label {
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
