@@ -9,4 +9,11 @@ body {
   height: 100%;
   width: 100%;
   overflow: hidden; /* o auto, según necesites */
+  font-family:
+    'Inter',
+    system-ui,
+    -apple-system,
+    sans-serif;
+  font-size: 14px;
+  -webkit-font-smoothing: antialiased;
 }

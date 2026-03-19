@@ -9,7 +9,7 @@ export const routes: Routes = [
   {
     path: 'compare',
     loadComponent: () => import('./features/compare/compare').then((m) => m.Compare),
-    data: { label: 'Compare', icon: 'compare' },
+    data: { label: 'Collections', icon: 'compare' },
   },
   {
     path: 'history',
@@ -19,6 +19,5 @@ export const routes: Routes = [
   {
     path: 'settings',
     loadComponent: () => import('./features/settings/settings').then((m) => m.Settings),
-    data: { label: 'Settings', icon: 'settings' },
   },
 ];
