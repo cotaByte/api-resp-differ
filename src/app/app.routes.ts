@@ -7,8 +7,11 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'compare',
-    loadComponent: () => import('./features/compare/compare').then((m) => m.Compare),
+    path: 'collections',
+    loadComponent: () =>
+      import('./features/collections/components/collection-list/collection-list').then(
+        (m) => m.CollectionList,
+      ),
     data: { label: 'Collections', icon: 'compare' },
   },
   {

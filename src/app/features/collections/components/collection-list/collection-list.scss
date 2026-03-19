@@ -1,0 +1,252 @@
+@use 'colors' as *;
+@use 'shadows' as *;
+@use 'borders' as *;
+@use 'margins' as *;
+
+$tag-colors: (
+  'production': (
+    bg: $green-100,
+    text: $green-800,
+  ),
+  'staging': (
+    bg: $yellow-100,
+    text: $yellow-800,
+  ),
+  'development': (
+    bg: $blue-100,
+    text: $blue-800,
+  ),
+);
+
+:host {
+  display: block;
+  padding: margin(6);
+}
+
+.collection-list {
+  max-width: 960px;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: margin(5);
+  }
+
+  &__title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: color('grey', 1000);
+    margin: 0;
+  }
+
+  &__create-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: margin(2);
+    height: 36px;
+    padding: 0 margin(4);
+    background: #2563eb;
+    color: $white;
+    border: none;
+    border-radius: 6px;
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 150ms ease;
+
+    &:hover {
+      background: #1d4ed8;
+    }
+
+    &:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 2px;
+    }
+  }
+
+  &__empty {
+    color: color('grey', 500);
+    font-size: 0.9375rem;
+  }
+
+  &__loading {
+    display: flex;
+    align-items: center;
+    gap: margin(3);
+    color: color('grey', 500);
+    font-size: 0.9375rem;
+    padding: margin(4) 0;
+  }
+
+  &__spinner {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    border: 2px solid color('grey', 300);
+    border-top-color: #2563eb;
+    border-radius: 50%;
+    animation: spin 700ms linear infinite;
+    flex-shrink: 0;
+  }
+
+  &__error {
+    display: flex;
+    align-items: center;
+    gap: margin(2);
+    padding: margin(3) margin(4);
+    border-radius: 6px;
+    background: $red-100;
+    color: $red-700;
+    font-size: 0.9375rem;
+    border: border(1) solid $red-200;
+  }
+
+  &__grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: margin(4);
+  }
+}
+
+.collection-card {
+  background: $white;
+  border: border(1) solid color('grey', 300);
+  border-radius: 8px;
+  padding: margin(4);
+  display: flex;
+  flex-direction: column;
+  gap: margin(3);
+  box-shadow: $shadow-1;
+  transition: box-shadow 150ms ease;
+
+  &:hover {
+    box-shadow: $shadow-2;
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: margin(2);
+  }
+
+  &__name {
+    font-size: 1rem;
+    font-weight: 600;
+    color: color('grey', 1000);
+    margin: 0;
+  }
+
+  &__tag {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 12px;
+    background: color('grey', 200);
+    color: color('grey', 700);
+
+    @each $name, $palette in $tag-colors {
+      &[data-tag='#{$name}'] {
+        background: map-get($palette, bg);
+        color: map-get($palette, text);
+      }
+    }
+  }
+
+  &__id {
+    display: flex;
+    align-items: center;
+    gap: margin(2);
+    margin: 0;
+    color: color('grey', 500);
+    font-size: 0.8125rem;
+
+    code {
+      font-family: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+      font-size: 0.8125rem;
+      color: color('grey', 700);
+    }
+  }
+
+  &__id-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: color('grey', 400);
+  }
+
+  &__footer {
+    display: flex;
+    flex-direction: column;
+    gap: margin(1);
+    padding-top: margin(2);
+    border-top: border(1) solid color('grey', 200);
+  }
+
+  &__meta {
+    display: flex;
+    align-items: center;
+    gap: margin(2);
+    font-size: 0.8125rem;
+    color: color('grey', 600);
+
+    time {
+      color: color('grey', 800);
+    }
+  }
+
+  &__meta-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: color('grey', 400);
+    min-width: 52px;
+  }
+
+  &__actions {
+    border-top: border(1) solid color('grey', 200);
+    padding-top: margin(2);
+    display: flex;
+  }
+
+  &__delete-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: margin(1);
+    height: 30px;
+    padding: 0 margin(3);
+    background: transparent;
+    color: $red-600;
+    border: border(1) solid transparent;
+    border-radius: 6px;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background 150ms ease,
+      border-color 150ms ease;
+
+    &:hover {
+      background: $red-100;
+      border-color: $red-200;
+    }
+
+    &:focus-visible {
+      outline: 2px solid $red-500;
+      outline-offset: 2px;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

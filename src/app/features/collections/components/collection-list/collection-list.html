@@ -1,0 +1,118 @@
+<section class="collection-list" aria-labelledby="collection-list-title">
+  <div class="collection-list__header">
+    <h2 class="collection-list__title" id="collection-list-title">Collections</h2>
+    <button class="collection-list__create-btn" type="button" (click)="openCreateModal()">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <line x1="12" y1="5" x2="12" y2="19" />
+        <line x1="5" y1="12" x2="19" y2="12" />
+      </svg>
+      New Collection
+    </button>
+  </div>
+
+  @if (loading()) {
+    <div class="collection-list__loading" role="status" aria-live="polite">
+      <span class="collection-list__spinner" aria-hidden="true"></span>
+      Loading collections…
+    </div>
+  } @else if (error()) {
+    <div class="collection-list__error" role="alert">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+      >
+        <circle cx="12" cy="12" r="10" />
+        <line x1="12" y1="8" x2="12" y2="12" />
+        <line x1="12" y1="16" x2="12.01" y2="16" />
+      </svg>
+      {{ error() }}
+    </div>
+  } @else if (collections().length === 0) {
+    <p class="collection-list__empty">No collections found.</p>
+  } @else {
+    <ul class="collection-list__grid" role="list">
+      @for (collection of collections(); track collection.id) {
+        <li class="collection-card">
+          <header class="collection-card__header">
+            <h3 class="collection-card__name">{{ collection.name }}</h3>
+            <span
+              class="collection-card__tag"
+              [attr.data-tag]="collection.tag"
+              [attr.aria-label]="'Tag: ' + collection.tag"
+            >
+              {{ collection.tag }}
+            </span>
+          </header>
+
+          <p class="collection-card__id">
+            <span class="collection-card__id-label">ID</span>
+            <code>{{ collection.id }}</code>
+          </p>
+
+          <footer class="collection-card__footer">
+            <div class="collection-card__meta">
+              <span class="collection-card__meta-label">Created</span>
+              <time [attr.datetime]="collection.createdAt.toISOString()">
+                {{ collection.createdAt | date: 'dd MMM yyyy, HH:mm' }}
+              </time>
+            </div>
+            <div class="collection-card__meta">
+              <span class="collection-card__meta-label">Updated</span>
+              <time [attr.datetime]="collection.updatedAt.toISOString()">
+                {{ collection.updatedAt | date: 'dd MMM yyyy, HH:mm' }}
+              </time>
+            </div>
+          </footer>
+
+          <div class="collection-card__actions">
+            <button
+              class="collection-card__delete-btn"
+              type="button"
+              (click)="deleteCollection(collection.id)"
+              [attr.aria-label]="'Delete collection ' + collection.name"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+              >
+                <polyline points="3 6 5 6 21 6" />
+                <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6" />
+                <path d="M10 11v6" />
+                <path d="M14 11v6" />
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2" />
+              </svg>
+              Delete
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</section>
