@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { CollectionsModule } from './collections/collections.module';
 import { Collection } from './database/entities/collection.entity';
 import { CollectionEndpoint } from './database/entities/collection-endpoint.entity';
 
@@ -26,6 +27,7 @@ import { CollectionEndpoint } from './database/entities/collection-endpoint.enti
         logging: config.get<string>('NODE_ENV') !== 'production',
       }),
     }),
+    CollectionsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
