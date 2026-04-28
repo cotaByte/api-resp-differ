@@ -1,0 +1,12 @@
+{
+  "name": "@api-resp-differ/api-client",
+  "version": "0.0.1",
+  "description": "Generated OpenAPI client for api-resp-differ",
+  "private": true,
+  "scripts": {
+    "generate": "ng-openapi-gen --config ng-openapi-gen.json"
+  },
+  "devDependencies": {
+    "ng-openapi-gen": "^1.0.5"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "name": "@api-resp-differ/data-access",
+  "version": "0.0.1",
+  "description": "Angular data-access layer for api-resp-differ",
+  "private": true,
+  "peerDependencies": {
+    "@angular/common": ">=17.0.0",
+    "@angular/core": ">=17.0.0"
+  }
+}

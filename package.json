@@ -6,7 +6,19 @@
   "author": "ramiajo",
   "type": "commonjs",
   "main": "index.js",
+  "workspaces": [
+    "apps/*",
+    "libs/*"
+  ],
   "scripts": {
+    "generate:openapi": "npm run generate:openapi --workspace=apps/api",
+    "copy:openapi": "cp apps/api/openapi.json libs/api-client/openapi.json",
+    "generate:client": "npm run generate --workspace=libs/api-client",
+    "generate:all": "npm run generate:openapi && npm run copy:openapi && npm run generate:client",
+    "start:api": "npm run start:dev --workspace=apps/api",
+    "start:web": "npm run start --workspace=apps/web",
+    "build:api": "npm run build --workspace=apps/api",
+    "build:web": "npm run build --workspace=apps/web",
     "test": "echo \"Error: no test specified\" && exit 1"
   }
 }

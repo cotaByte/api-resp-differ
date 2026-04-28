@@ -1,1 +1,6 @@
 **/node_modules/
+
+# Generated OpenAPI artifacts
+apps/api/openapi.json
+libs/api-client/openapi.json
+libs/api-client/src/

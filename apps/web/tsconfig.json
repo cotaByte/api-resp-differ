@@ -13,7 +13,14 @@
     "experimentalDecorators": true,
     "importHelpers": true,
     "target": "ES2022",
-    "module": "preserve"
+    "module": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@api-resp-differ/api-client": ["../../libs/api-client/src/index.ts"],
+      "@api-resp-differ/api-client/*": ["../../libs/api-client/src/*"],
+      "@api-resp-differ/data-access": ["../../libs/data-access/src/index.ts"],
+      "@api-resp-differ/data-access/*": ["../../libs/data-access/src/*"]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
