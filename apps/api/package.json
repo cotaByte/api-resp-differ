@@ -18,17 +18,26 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "generate:openapi": "ts-node -r tsconfig-paths/register src/generate-openapi.ts"
+    "generate:openapi": "ts-node -r tsconfig-paths/register src/generate-openapi.ts",
+    "migration:generate": "npx tsx ../../node_modules/typeorm/cli.js migration:generate -d src/data-source.ts",
+    "migration:run": "npx tsx ../../node_modules/typeorm/cli.js migration:run -d src/data-source.ts",
+    "migration:revert": "npx tsx ../../node_modules/typeorm/cli.js migration:revert -d src/data-source.ts"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.1",
+    "@nestjs/config": "^4.0.0",
     "@nestjs/core": "^11.0.1",
     "@nestjs/platform-express": "^11.0.1",
     "@nestjs/swagger": "^11.0.0",
+    "@nestjs/typeorm": "^11.0.0",
+    "pg": "^8.13.0",
     "reflect-metadata": "^0.2.2",
-    "rxjs": "^7.8.1"
+    "rxjs": "^7.8.1",
+    "typeorm": "^0.3.20"
   },
   "devDependencies": {
+    "@types/pg": "^8.11.0",
+    "tsx": "^4.19.0",
     "@eslint/eslintrc": "^3.2.0",
     "@eslint/js": "^9.18.0",
     "@nestjs/cli": "^11.0.0",

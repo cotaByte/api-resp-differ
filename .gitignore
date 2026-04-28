@@ -2,5 +2,9 @@
 
 # Generated OpenAPI artifacts
 apps/api/openapi.json
+apps/api/.github
 libs/api-client/openapi.json
 libs/api-client/src/
+
+# Environment secrets
+apps/api/.env
