@@ -3,6 +3,7 @@
 # Generated OpenAPI artifacts
 apps/api/openapi.json
 apps/api/.github
+apps/api/dist/
 libs/api-client/openapi.json
 libs/api-client/src/
 
