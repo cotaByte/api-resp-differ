@@ -3,16 +3,8 @@
   <main class="app-content">
     <header class="app-header">
       <span class="app-title">Collections</span>
-      <button (click)="modal.open()">Apretam</button>
     </header>
 
-    <modal #modal>
-      <div header>
-        <h2>Modal Title</h2>
-      </div>
-      <p>This is the content of the modal.</p>
-      <button (click)="modal.close()">Close Modal</button>
-    </modal>
     <router-outlet />
   </main>
 </div>

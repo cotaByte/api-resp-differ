@@ -2,11 +2,10 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { SideNavbarComponent } from './layout/side-navbar-component/side-navbar-component';
 import { NavItem } from './layout/side-navbar-component/nav-item';
-import { ModalComponent } from './shared/components/modal/modal.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, SideNavbarComponent, ModalComponent],
+  imports: [RouterOutlet, SideNavbarComponent],
   templateUrl: './app.html',
   styleUrl: './app.scss',
 })
