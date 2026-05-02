@@ -4,8 +4,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { CollectionsModule } from './collections/collections.module';
+import { TargetsModule } from './targets/targets.module';
 import { Collection } from './database/entities/collection.entity';
 import { CollectionEndpoint } from './database/entities/collection-endpoint.entity';
+import { Target } from './database/entities/target.entity';
 
 @Module({
   imports: [
@@ -22,12 +24,13 @@ import { CollectionEndpoint } from './database/entities/collection-endpoint.enti
         username: config.get<string>('DB_USER', 'postgres'),
         password: config.get<string>('DB_PASSWORD', 'postgres'),
         database: config.get<string>('DB_NAME', 'api_resp_differ'),
-        entities: [Collection, CollectionEndpoint],
+        entities: [Collection, CollectionEndpoint, Target],
         synchronize: false,
         logging: config.get<string>('NODE_ENV') !== 'production',
       }),
     }),
     CollectionsModule,
+    TargetsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
