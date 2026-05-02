@@ -48,7 +48,16 @@
                 "input": "public"
               }
             ],
-            "styles": ["src/styles.scss"]
+            "styles": [
+              "src/styles.scss",
+              "src/app/style/animations.scss",
+              "src/app/style/borders.scss",
+              "src/app/style/paddings.scss",
+              "src/app/style/margins.scss",
+              "src/app/style/shadows.scss",
+              "src/app/style/tokens/semantic.scss",
+              "src/app/style/tokens/spacing.scss"
+            ]
           },
           "configurations": {
             "production": {

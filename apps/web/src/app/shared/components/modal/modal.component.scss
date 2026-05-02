@@ -1,0 +1,124 @@
+@use '../../../style/tokens/semantic' as tokens;
+@use '../../../style/animations.scss';
+
+:host {
+  display: contents;
+}
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(9, 30, 66, 0.54);
+  z-index: 100;
+}
+
+.modal-panel {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 101;
+  display: flex;
+  flex-direction: column;
+  min-width: 480px;
+  max-width: 90vw;
+  max-height: 90dvh;
+  background-color: var(--neutral-0);
+  border-radius: 8px;
+  box-shadow: var(--shadow-overlay);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--neutral-300);
+}
+
+.modal-header-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-close-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  border-radius: 4px;
+  background-color: transparent;
+  color: var(--neutral-700);
+  cursor: pointer;
+  flex-shrink: 0;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard);
+
+  &:hover {
+    background-color: var(--neutral-200);
+    color: var(--neutral-1000);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--blue-400);
+    outline-offset: 2px;
+  }
+}
+
+.modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-5);
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding: var(--space-4) var(--space-5);
+  border-top: 1px solid var(--neutral-300);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2) var(--space-4);
+  border: none;
+  border-radius: 4px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
+
+  &:focus-visible {
+    outline: 2px solid var(--blue-400);
+    outline-offset: 2px;
+  }
+}
+
+.btn-primary {
+  background-color: var(--blue-400);
+  color: var(--neutral-0);
+
+  &:hover {
+    background-color: var(--blue-500);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.btn-secondary {
+  background-color: var(--neutral-200);
+  color: var(--neutral-1000);
+
+  &:hover {
+    background-color: var(--neutral-300);
+  }
+}
