@@ -1,4 +1,3 @@
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
 
 ## TypeScript Best Practices
@@ -33,6 +32,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Do NOT use `ngClass`, use `class` bindings instead
 - Do NOT use `ngStyle`, use `style` bindings instead
 - When using external templates/styles, use paths relative to the component TS file.
+- When authoring component HTML templates, use the CSS classes and design system tokens defined in `src/app/styles/` folder. This includes animations, borders, padding, colors, spacing, typography, shadows, and any other design tokens or utility classes available in that folder. Always prefer these over hardcoded values.
 
 ## State Management
 

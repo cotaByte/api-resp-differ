@@ -1,0 +1,25 @@
+@mixin generate-padding($prefix, $property, $steps) {
+  @for $i from 0 through $steps {
+    .#{$prefix}-#{$i} {
+      #{$property}: var(--space-#{$i});
+    }
+  }
+}
+
+@mixin generate-padding-axis($prefix, $props, $steps) {
+  @for $i from 1 through $steps {
+    .#{$prefix}-#{$i} {
+      @each $prop in $props {
+        #{$prop}: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@include generate-padding('p', 'padding', 8);
+@include generate-padding('pt', 'padding-top', 4);
+@include generate-padding('pb', 'padding-bottom', 4);
+@include generate-padding('pl', 'padding-left', 1);
+@include generate-padding('pr', 'padding-right', 1);
+@include generate-padding-axis('px', ('padding-left', 'padding-right'), 1);
+@include generate-padding-axis('py', ('padding-top', 'padding-bottom'), 1);

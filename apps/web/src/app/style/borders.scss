@@ -1,0 +1,25 @@
+@mixin generate-border($prefix, $property, $steps) {
+  @for $i from 0 through $steps {
+    .#{$prefix}-#{$i} {
+      #{$property}: var(--space-#{$i});
+    }
+  }
+}
+
+@mixin generate-border-axis($prefix, $props, $steps) {
+  @for $i from 1 through $steps {
+    .#{$prefix}-#{$i} {
+      @each $prop in $props {
+        #{$prop}: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@include generate-border('b', 'border', 8);
+@include generate-border('bt', 'border-top', 4);
+@include generate-border('bb', 'border-bottom', 4);
+@include generate-border('bl', 'border-left', 1);
+@include generate-border('br', 'border-right', 1);
+@include generate-border-axis('bx', ('border-left', 'border-right'), 1);
+@include generate-border-axis('by', ('border-top', 'border-bottom'), 1);

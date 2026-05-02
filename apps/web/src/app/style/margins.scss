@@ -1,0 +1,25 @@
+@mixin generate-margin($prefix, $property, $steps) {
+  @for $i from 0 through $steps {
+    .#{$prefix}-#{$i} {
+      #{$property}: var(--space-#{$i});
+    }
+  }
+}
+
+@mixin generate-margin-axis($prefix, $props, $steps) {
+  @for $i from 1 through $steps {
+    .#{$prefix}-#{$i} {
+      @each $prop in $props {
+        #{$prop}: var(--space-#{$i});
+      }
+    }
+  }
+}
+
+@include generate-margin('m', 'margin', 8);
+@include generate-margin('mt', 'margin-top', 4);
+@include generate-margin('mb', 'margin-bottom', 4);
+@include generate-margin('ml', 'margin-left', 1);
+@include generate-margin('mr', 'margin-right', 1);
+@include generate-margin-axis('mx', ('margin-left', 'margin-right'), 1);
+@include generate-margin-axis('my', ('margin-top', 'margin-bottom'), 1);

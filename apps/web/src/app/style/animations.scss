@@ -1,0 +1,160 @@
+:root {
+  --duration-fast: 120ms;
+  --duration-normal: 200ms;
+  --duration-slow: 320ms;
+
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+  --easing-decelerate: cubic-bezier(0, 0, 0.2, 1);
+  --easing-accelerate: cubic-bezier(0.4, 0, 1, 1);
+}
+
+/* =========================
+   18. FADE ANIMATIONS
+   ========================= */
+
+.fade-in {
+  animation: fadeIn var(--duration-normal) var(--easing-standard) forwards;
+}
+
+.fade-out {
+  animation: fadeOut var(--duration-fast) var(--easing-standard) forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+/* =========================
+   19. SLIDE / MOVE ANIMATIONS
+   ========================= */
+
+.slide-up {
+  animation: slideUp var(--duration-normal) var(--easing-decelerate) forwards;
+}
+
+.slide-down {
+  animation: slideDown var(--duration-normal) var(--easing-decelerate) forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-0.5rem);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   20. SCALE ANIMATIONS
+   ========================= */
+
+.scale-in {
+  animation: scaleIn var(--duration-normal) var(--easing-decelerate) forwards;
+}
+
+.scale-out {
+  animation: scaleOut var(--duration-fast) var(--easing-accelerate) forwards;
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes scaleOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+/* =========================
+   21. COLLAPSE / EXPAND
+   ========================= */
+
+.collapse {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height var(--duration-normal) var(--easing-standard);
+}
+
+.collapse.open {
+  max-height: 500px; /* fallback max */
+}
+
+/* =========================
+   22. UTILITY TRANSITIONS
+   ========================= */
+
+.transition-fast {
+  transition: all var(--duration-fast) var(--easing-standard);
+}
+
+.transition {
+  transition: all var(--duration-normal) var(--easing-standard);
+}
+
+.transition-slow {
+  transition: all var(--duration-slow) var(--easing-standard);
+}
+
+/* =========================
+   23. MICROINTERACTIONS
+   ========================= */
+
+.hover-lift {
+  transition:
+    transform var(--duration-fast) var(--easing-standard),
+    box-shadow var(--duration-fast) var(--easing-standard);
+}
+
+.hover-lift:hover {
+  transform: translateY(-0.125rem);
+  box-shadow: var(--shadow-md);
+}
+
+.press {
+  transition: transform var(--duration-fast) var(--easing-accelerate);
+}
+
+.press:active {
+  transform: scale(0.97);
+}
