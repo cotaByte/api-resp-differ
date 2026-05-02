@@ -1,0 +1,19 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "npm install - web",
+			"type": "shell",
+			"command": "cd apps/web && npm install",
+			"isBackground": false,
+			"problemMatcher": []
+		},
+		{
+			"label": "npm install legacy - web",
+			"type": "shell",
+			"command": "cd apps/web && npm install --legacy-peer-deps",
+			"isBackground": false,
+			"problemMatcher": []
+		}
+	]
+}
