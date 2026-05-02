@@ -1,1 +1,40 @@
-<p>side-navbar-component works!</p>
+<nav class="side-navbar" [class.expanded]="isExpanded()">
+  <!-- Header: title + toggle -->
+  <div class="nav-header">
+    <span class="nav-title">API Resp Differ</span>
+    <button
+      class="nav-toggle"
+      (click)="toggle()"
+      [title]="isExpanded() ? 'Collapse sidebar' : 'Expand sidebar'"
+    >
+      <span class="material-symbols-outlined"> dock_to_right </span>
+    </button>
+  </div>
+
+  <!-- Nav items -->
+  <ul class="nav-list">
+    @for (item of allItems; track item.label) {
+      <li class="nav-item">
+        @if (item.route) {
+          <a
+            class="nav-link"
+            [routerLink]="item.route"
+            routerLinkActive="active"
+            [title]="item.label"
+          >
+            <span class="material-symbols-outlined nav-icon">{{ item.icon }}</span>
+            <span class="nav-label">{{ item.label }}</span>
+          </a>
+        } @else {
+          <button class="nav-link" (click)="item.action && item.action()" [title]="item.label">
+            <span class="material-symbols-outlined nav-icon">{{ item.icon }}</span>
+            <span class="nav-label">{{ item.label }}</span>
+          </button>
+        }
+      </li>
+    }
+  </ul>
+
+  <!-- ContentChildren slot -->
+  <ng-content />
+</nav>

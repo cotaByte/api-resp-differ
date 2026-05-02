@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+@use 'app/style/tokens/colors';
+@use 'app/style/tokens/spacing';
+@use 'app/style/shadows';
+@use 'app/style/animations';
+@use 'app/style/paddings';
+@use 'app/style/margins';
+@use 'app/style/borders';
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--neutral-100);
+  color: var(--neutral-900);
+}
