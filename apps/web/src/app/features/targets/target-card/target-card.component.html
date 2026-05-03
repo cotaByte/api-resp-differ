@@ -1,0 +1,26 @@
+<article class="target-card">
+  <div class="target-card__body">
+    <span class="target-card__url">{{ target().url }}</span>
+    @if (target().tag) {
+      <span class="target-card__tag">{{ target().tag }}</span>
+    }
+  </div>
+  <div class="target-card__actions">
+    <button
+      class="btn-secondary target-card__action-btn"
+      type="button"
+      [attr.aria-label]="'Edit ' + target().url"
+      (click)="onEdit()"
+    >
+      <span class="material-symbols-outlined">edit</span>
+    </button>
+    <button
+      class="btn-danger target-card__action-btn"
+      type="button"
+      [attr.aria-label]="'Delete ' + target().url"
+      (click)="onDelete()"
+    >
+      <span class="material-symbols-outlined">delete</span>
+    </button>
+  </div>
+</article>

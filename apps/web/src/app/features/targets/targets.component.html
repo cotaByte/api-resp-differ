@@ -1,0 +1,147 @@
+<div class="targets-page">
+  <header class="targets-header">
+    <h1 class="targets-title">Targets</h1>
+    <button class="btn-primary" type="button" (click)="openCreateModal()">
+      <span class="material-symbols-outlined">add</span>
+      Add target
+    </button>
+  </header>
+
+  @if (error()) {
+    <p class="targets-error" role="alert">{{ error() }}</p>
+  }
+
+  @if (loading()) {
+    <p class="targets-loading" aria-live="polite">Loading targets…</p>
+  } @else if (targets().length === 0) {
+    <div class="targets-empty">
+      <span class="material-symbols-outlined targets-empty__icon">language</span>
+      <p class="targets-empty__text">No targets yet. Add one to get started.</p>
+    </div>
+  } @else {
+    <ul class="targets-grid" aria-label="Targets list">
+      @for (target of targets(); track target.id) {
+        <li>
+          <app-target-card
+            [target]="target"
+            (edit)="openEditModal($event)"
+            (delete)="deleteTarget($event)"
+          />
+        </li>
+      }
+    </ul>
+  }
+</div>
+
+<!-- Create Modal -->
+<modal #createModal [hideAccept]="true" cancelLabel="Cancel">
+  <div header>
+    <h2 class="modal-form-title">New target</h2>
+  </div>
+
+  <form class="form" [formGroup]="createForm" (ngSubmit)="submitCreate()">
+    <div class="form-field">
+      <label class="form-label" for="create-url"> URL <span aria-hidden="true">*</span> </label>
+      <input
+        id="create-url"
+        class="form-input"
+        type="url"
+        formControlName="url"
+        placeholder="https://example.com"
+        autocomplete="off"
+        [attr.aria-invalid]="createForm.controls.url.invalid && createForm.controls.url.touched"
+        aria-describedby="create-url-error"
+      />
+      @if (createForm.controls.url.invalid && createForm.controls.url.touched) {
+        <span id="create-url-error" class="form-error" role="alert">
+          A valid URL starting with http:// or https:// is required.
+        </span>
+      }
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="create-tag">Tag</label>
+      <input
+        id="create-tag"
+        class="form-input"
+        type="text"
+        formControlName="tag"
+        placeholder="e.g. production"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="create-color">Color label</label>
+      <input
+        id="create-color"
+        class="form-input"
+        type="text"
+        formControlName="color"
+        placeholder="e.g. blue"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Creating…' : 'Create' }}
+      </button>
+    </div>
+  </form>
+</modal>
+
+<!-- Edit Modal -->
+<modal #editModal [hideAccept]="true" cancelLabel="Cancel">
+  <div header>
+    <h2 class="modal-form-title">Edit target</h2>
+  </div>
+
+  <form class="form" [formGroup]="editForm" (ngSubmit)="submitEdit()">
+    <div class="form-field">
+      <label class="form-label" for="edit-url"> URL <span aria-hidden="true">*</span> </label>
+      <input
+        id="edit-url"
+        class="form-input"
+        type="url"
+        formControlName="url"
+        autocomplete="off"
+        [attr.aria-invalid]="editForm.controls.url.invalid && editForm.controls.url.touched"
+        aria-describedby="edit-url-error"
+      />
+      @if (editForm.controls.url.invalid && editForm.controls.url.touched) {
+        <span id="edit-url-error" class="form-error" role="alert">
+          A valid URL starting with http:// or https:// is required.
+        </span>
+      }
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="edit-tag">Tag</label>
+      <input
+        id="edit-tag"
+        class="form-input"
+        type="text"
+        formControlName="tag"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="edit-color">Color label</label>
+      <input
+        id="edit-color"
+        class="form-input"
+        type="text"
+        formControlName="color"
+        autocomplete="off"
+      />
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</modal>

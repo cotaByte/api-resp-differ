@@ -40,7 +40,7 @@
   </div>
 
   <form
-    class="collections-form"
+    class="form"
     [formGroup]="createForm"
     (ngSubmit)="submitCreate()"
     id="create-collection-form"
@@ -87,12 +87,7 @@
     <h2 class="modal-form-title">Edit collection</h2>
   </div>
 
-  <form
-    class="collections-form"
-    [formGroup]="editForm"
-    (ngSubmit)="submitEdit()"
-    id="edit-collection-form"
-  >
+  <form class="form" [formGroup]="editForm" (ngSubmit)="submitEdit()" id="edit-collection-form">
     <div class="form-field">
       <label class="form-label" for="edit-name">Name <span aria-hidden="true">*</span></label>
       <input
