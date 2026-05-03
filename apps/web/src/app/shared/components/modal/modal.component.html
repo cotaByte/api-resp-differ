@@ -1,0 +1,29 @@
+<ng-template cdkPortal>
+  <div class="modal-panel" role="dialog" aria-modal="true" tabindex="-1">
+    <div class="modal-header">
+      <div class="modal-header-content">
+        <ng-content select="[header]" />
+      </div>
+      <button class="modal-close-btn" type="button" aria-label="Close dialog" (click)="close()">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+      <ng-content />
+    </div>
+
+    <div class="modal-footer">
+      @if (!hideCancel()) {
+        <button class="btn-secondary" type="button" (click)="close()">
+          {{ cancelLabel() }}
+        </button>
+      }
+      @if (!hideAccept()) {
+        <button class="btn-primary" type="button" (click)="close()">
+          {{ acceptLabel() }}
+        </button>
+      }
+    </div>
+  </div>
+</ng-template>
