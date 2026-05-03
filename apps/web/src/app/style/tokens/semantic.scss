@@ -1,12 +1,14 @@
-$color-primary: var(--blue-400);
-$color-primary-hover: var(--blue-500);
+:root {
+  --color-primary: var(--blue-400);
+  --color-primary-hover: var(--blue-500);
 
-$color-background: var(--neutral-100);
-$color-surface: var(--neutral-0);
+  --color-background: var(--neutral-100);
+  --color-surface: var(--neutral-0);
 
-$color-text: var(--neutral-1000);
-$color-text-subtle: var(--neutral-600);
+  --color-text: var(--neutral-1000);
+  --color-text-subtle: var(--neutral-600);
 
-$color-success: var(--green-400);
-$color-danger: var(--red-400);
-$color-warning: var(--yellow-400);
+  --color-success: var(--green-400);
+  --color-danger: var(--red-400);
+  --color-warning: var(--yellow-400);
+}

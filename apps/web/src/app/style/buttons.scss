@@ -36,15 +36,15 @@
 // Primary
 .btn-primary {
   @extend %btn-base;
-  background-color: var(--blue-700);
+  background-color: var(--color-primary);
   color: var(--neutral-0);
 
   &:hover:not(:disabled) {
-    background-color: var(--blue-500);
+    background-color: var(--color-primary-hover);
   }
 
   &:active:not(:disabled) {
-    background-color: var(--blue-600);
+    background-color: var(--color-primary-active);
   }
 }
 
