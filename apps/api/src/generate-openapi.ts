@@ -10,6 +10,8 @@ async function generate() {
     logger: false,
   });
 
+  app.setGlobalPrefix('api');
+
   const config = new DocumentBuilder()
     .setTitle('api-resp-differ API')
     .setDescription('API for api-resp-differ')

@@ -1,0 +1,118 @@
+<div class="collections-page">
+  <header class="collections-header">
+    <h1 class="collections-title">Collections</h1>
+    <button class="btn-primary" type="button" (click)="openCreateModal()">
+      <span class="material-symbols-outlined">add</span>
+      Add collection
+    </button>
+  </header>
+
+  @if (error()) {
+    <p class="collections-error" role="alert">{{ error() }}</p>
+  }
+
+  @if (loading()) {
+    <p class="collections-loading" aria-live="polite">Loading collections…</p>
+  } @else if (collections().length === 0) {
+    <div class="collections-empty">
+      <span class="material-symbols-outlined collections-empty__icon">folder_open</span>
+      <p class="collections-empty__text">No collections yet. Create one to get started.</p>
+    </div>
+  } @else {
+    <ul class="collections-grid" aria-label="Collections list">
+      @for (collection of collections(); track collection.id) {
+        <li>
+          <app-collection-card
+            [collection]="collection"
+            (edit)="openEditModal($event)"
+            (delete)="deleteCollection($event)"
+          />
+        </li>
+      }
+    </ul>
+  }
+</div>
+
+<!-- Create Modal -->
+<modal #createModal [hideAccept]="true" cancelLabel="Cancel">
+  <div header>
+    <h2 class="modal-form-title">New collection</h2>
+  </div>
+
+  <form
+    class="collections-form"
+    [formGroup]="createForm"
+    (ngSubmit)="submitCreate()"
+    id="create-collection-form"
+  >
+    <div class="form-field">
+      <label class="form-label" for="create-name">Name <span aria-hidden="true">*</span></label>
+      <input
+        id="create-name"
+        class="form-input"
+        type="text"
+        formControlName="name"
+        placeholder="My collection"
+        autocomplete="off"
+        [attr.aria-invalid]="createForm.controls.name.invalid && createForm.controls.name.touched"
+        aria-describedby="create-name-error"
+      />
+      @if (createForm.controls.name.invalid && createForm.controls.name.touched) {
+        <span id="create-name-error" class="form-error" role="alert">Name is required.</span>
+      }
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="create-description">Description</label>
+      <textarea
+        id="create-description"
+        class="form-input form-textarea"
+        formControlName="description"
+        placeholder="Optional description"
+        rows="3"
+      ></textarea>
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Creating…' : 'Create' }}
+      </button>
+    </div>
+  </form>
+</modal>
+
+<!-- Edit Modal -->
+<modal #editModal [hideAccept]="true" cancelLabel="Cancel">
+  <div header>
+    <h2 class="modal-form-title">Edit collection</h2>
+  </div>
+
+  <form
+    class="collections-form"
+    [formGroup]="editForm"
+    (ngSubmit)="submitEdit()"
+    id="edit-collection-form"
+  >
+    <div class="form-field">
+      <label class="form-label" for="edit-name">Name <span aria-hidden="true">*</span></label>
+      <input
+        id="edit-name"
+        class="form-input"
+        type="text"
+        formControlName="name"
+        autocomplete="off"
+        [attr.aria-invalid]="editForm.controls.name.invalid && editForm.controls.name.touched"
+        aria-describedby="edit-name-error"
+      />
+      @if (editForm.controls.name.invalid && editForm.controls.name.touched) {
+        <span id="edit-name-error" class="form-error" role="alert">Name is required.</span>
+      }
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-primary" type="submit" [disabled]="submitting()">
+        {{ submitting() ? 'Saving…' : 'Save' }}
+      </button>
+    </div>
+  </form>
+</modal>
