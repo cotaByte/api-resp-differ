@@ -12,8 +12,8 @@ import { NavItem } from './layout/side-navbar-component/nav-item';
 export class App {
   navItems: NavItem[] = [
     { icon: 'home', label: 'Home', route: '/' },
-    { icon: 'compare_arrows', label: 'Compare', route: '/compare' },
     { icon: 'folder', label: 'Collections', route: '/collections' },
-    { icon: 'settings', label: 'Settings', route: '/settings' },
+    { icon: 'open_in_browser', label: 'Targets', route: '/targets' },
+    { icon: 'automation', label: 'Runs', route: '/runs' },
   ];
 }
