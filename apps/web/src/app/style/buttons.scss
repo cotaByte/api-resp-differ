@@ -83,15 +83,15 @@
 // Danger
 .btn-danger {
   @extend %btn-base;
-  background-color: var(--red-700);
+  background-color: var(--red-600);
   color: var(--neutral-0);
 
   &:hover:not(:disabled) {
-    background-color: var(--red-800);
+    background-color: var(--red-500);
   }
 
   &:active:not(:disabled) {
-    background-color: var(--red-900);
+    background-color: var(--red-400);
   }
 }
 
@@ -99,13 +99,13 @@
 .btn-error {
   @extend %btn-base;
   background-color: var(--neutral-0);
-  border: 1px solid var(--red-700);
-  color: var(--red-700);
+  border: 1px solid var(--red-600);
+  color: var(--red-600);
 
   &:hover:not(:disabled) {
     background-color: var(--red-50);
-    border-color: var(--red-800);
-    color: var(--red-800);
+    border-color: var(--red-600);
+    color: var(--red-600);
   }
 
   &:active:not(:disabled) {
