@@ -14,5 +14,5 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideHttpClient(),
     { provide: ApiConfiguration, useValue: apiConfig },
-  ]
+  ],
 };
