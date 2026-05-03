@@ -10,6 +10,9 @@
     "apps/*",
     "libs/*"
   ],
+  "dependencies": {
+    "@angular/platform-browser": "21.2.10"
+  },
   "scripts": {
     "generate:openapi": "npm run generate:openapi --workspace=apps/api",
     "copy:openapi": "cp apps/api/openapi.json libs/api-client/openapi.json",

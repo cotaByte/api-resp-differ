@@ -1,0 +1,114 @@
+// Base button styles — Atlassian-inspired
+%btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1;
+  padding: 0 12px;
+  height: 32px;
+  text-decoration: none;
+  transition:
+    background-color 0.1s ease-in-out,
+    box-shadow 0.1s ease-in-out,
+    color 0.1s ease-in-out;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid var(--blue-400);
+    outline-offset: 2px;
+  }
+
+  &:disabled,
+  &[aria-disabled='true'] {
+    cursor: not-allowed;
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+// Primary
+.btn-primary {
+  @extend %btn-base;
+  background-color: var(--blue-700);
+  color: var(--neutral-0);
+
+  &:hover:not(:disabled) {
+    background-color: var(--blue-500);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--blue-600);
+  }
+}
+
+// Secondary
+.btn-secondary {
+  @extend %btn-base;
+  background-color: var(--neutral-0);
+  border: 1px solid var(--neutral-300);
+  color: var(--neutral-800);
+
+  &:hover:not(:disabled) {
+    background-color: var(--neutral-100);
+    border-color: var(--neutral-400);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--neutral-200);
+  }
+}
+
+// Warning
+.btn-warning {
+  @extend %btn-base;
+  background-color: var(--yellow-400);
+  color: var(--neutral-900);
+
+  &:hover:not(:disabled) {
+    background-color: var(--yellow-500);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--yellow-600);
+  }
+}
+
+// Danger
+.btn-danger {
+  @extend %btn-base;
+  background-color: var(--red-700);
+  color: var(--neutral-0);
+
+  &:hover:not(:disabled) {
+    background-color: var(--red-800);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--red-900);
+  }
+}
+
+// Error (subtle/outlined variant — distinct from danger)
+.btn-error {
+  @extend %btn-base;
+  background-color: var(--neutral-0);
+  border: 1px solid var(--red-700);
+  color: var(--red-700);
+
+  &:hover:not(:disabled) {
+    background-color: var(--red-50);
+    border-color: var(--red-800);
+    color: var(--red-800);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--red-100);
+  }
+}
