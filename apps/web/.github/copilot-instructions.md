@@ -33,6 +33,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Do NOT use `ngStyle`, use `style` bindings instead
 - When using external templates/styles, use paths relative to the component TS file.
 - When authoring component HTML templates, use the CSS classes and design system tokens defined in `src/app/styles/` folder. This includes animations, borders, padding, colors, spacing, typography, shadows, and any other design tokens or utility classes available in that folder. Always prefer these over hardcoded values.
+- Use bem class naming convention for CSS classes, and avoid using element selectors in stylesheets. For example, use `.my-component__header` instead of `h1` in the component's stylesheet. This ensures styles are scoped to the component and do not affect global styles or other components.
 
 ## State Management
 
