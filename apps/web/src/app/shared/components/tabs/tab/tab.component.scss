@@ -1,0 +1,13 @@
+:host {
+  display: contents;
+}
+
+.tab {
+  &__panel {
+    min-width: 100%;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    overflow-y: auto;
+    padding: var(--space-4);
+  }
+}

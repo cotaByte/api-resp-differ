@@ -1,0 +1,30 @@
+<div role="tablist" class="tabs__header">
+  @for (tab of tabMeta(); track tab.id) {
+    <button
+      #tabBtn
+      role="tab"
+      [id]="tab.id + '-tab'"
+      [attr.aria-selected]="activeTabId() === tab.id"
+      [attr.aria-controls]="tab.id + '-panel'"
+      [tabindex]="activeTabId() === tab.id ? 0 : -1"
+      class="tabs__nav-item"
+      [class.tabs__nav-item--active]="activeTabId() === tab.id"
+      (click)="selectTab(tab.id)"
+      (keydown)="onTabKeydown($event, tab.id)"
+    >
+      @if (tab.headerTpl) {
+        <ng-container *ngTemplateOutlet="tab.headerTpl" />
+      } @else {
+        {{ tab.label }}
+      }
+    </button>
+  }
+</div>
+
+<div
+  #tabsBody
+  class="tabs__body"
+  [style.height]="height() ?? '100%'"
+>
+  <ng-content />
+</div>

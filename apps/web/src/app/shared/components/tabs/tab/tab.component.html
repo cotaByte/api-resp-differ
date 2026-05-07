@@ -1,0 +1,9 @@
+<div
+  role="tabpanel"
+  [attr.id]="id() + '-panel'"
+  [attr.aria-labelledby]="id() + '-tab'"
+  [attr.aria-hidden]="!selected()"
+  class="tab__panel"
+>
+  <ng-content />
+</div>
