@@ -1,0 +1,74 @@
+<button
+  #trigger
+  type="button"
+  class="dropdown-trigger"
+  [class.dropdown-trigger--open]="_isOpen()"
+  [class.dropdown-trigger--disabled]="isDisabled()"
+  [disabled]="isDisabled()"
+  [attr.aria-haspopup]="'listbox'"
+  [attr.aria-expanded]="_isOpen()"
+  (click)="open()"
+  (keydown)="onTriggerKeydown($event)"
+>
+  <span class="dropdown-trigger-label">
+    {{ selectedLabel() ?? emptyOptionsPlaceholderLabel() }}
+  </span>
+  <span
+    class="material-symbols-outlined dropdown-chevron"
+    [class.dropdown-chevron--open]="_isOpen()"
+    aria-hidden="true"
+  >
+    expand_more
+  </span>
+</button>
+
+<ng-template cdkPortal>
+  <div
+    class="dropdown-panel scale-in"
+    role="listbox"
+    [attr.aria-label]="'Options'"
+    (keydown)="onPanelKeydown($event)"
+  >
+    @if (hasSearchInput()) {
+      <div class="dropdown-search">
+        <span class="material-symbols-outlined dropdown-search-icon" aria-hidden="true">
+          search
+        </span>
+        <input
+          class="dropdown-search-input"
+          type="text"
+          [value]="_searchQuery()"
+          placeholder="Search..."
+          aria-label="Search options"
+          (input)="onSearchChange($event)"
+        />
+      </div>
+    }
+
+    <div class="dropdown-options" role="group">
+      @for (option of filteredOptions(); track option[value()]) {
+        <button
+          class="dropdown-option"
+          type="button"
+          role="option"
+          [attr.aria-selected]="option[value()] === selectedOption()?.[value()]"
+          [class.dropdown-option--selected]="option[value()] === selectedOption()?.[value()]"
+          (click)="selectOption(option)"
+        >
+          @if (optionTemplate()) {
+            <ng-template
+              [ngTemplateOutlet]="optionTemplate()!"
+              [ngTemplateOutletContext]="{ $implicit: option }"
+            />
+          } @else {
+            {{ option[label()] }}
+          }
+        </button>
+      } @empty {
+        <div class="dropdown-empty" role="status">
+          {{ emptyOptionsPlaceholderLabel() }}
+        </div>
+      }
+    </div>
+  </div>
+</ng-template>
