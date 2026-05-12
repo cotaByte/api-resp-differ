@@ -6,7 +6,7 @@ import { ApiConfiguration } from '@api-resp-differ/api-client';
 import { routes } from './app.routes';
 
 const apiConfig = new ApiConfiguration();
-apiConfig.rootUrl = '/api';
+apiConfig.rootUrl = '';
 
 export const appConfig: ApplicationConfig = {
   providers: [
