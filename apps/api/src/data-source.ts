@@ -1,8 +1,6 @@
 import { config } from 'dotenv';
 import { resolve } from 'path';
 import { DataSource } from 'typeorm';
-import { Collection } from './database/entities/collection.entity';
-import { CollectionEndpoint } from './database/entities/collection-endpoint.entity';
 import { Target } from './database/entities/target.entity';
 
 config({ path: resolve(__dirname, '../.env') });
@@ -14,7 +12,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USER ?? 'postgres',
   password: process.env.DB_PASSWORD ?? 'postgres',
   database: process.env.DB_NAME ?? 'api_resp_differ',
-  entities: [Collection, CollectionEndpoint, Target],
+  entities: [Target],
   migrations: [__dirname + '/database/migrations/*{.ts,.js}'],
   synchronize: false,
 });

@@ -93,8 +93,8 @@ export class TargetsComponent implements OnInit {
     this.editingId.set(target.id);
     this.editForm.reset({
       url: target.url,
-      tag: target.tag ?? '',
-      color: target.color ?? '',
+      tag: (target.tag || '') as string,
+      color: (target.color || '') as string,
     });
     this.editModal().open();
   }
